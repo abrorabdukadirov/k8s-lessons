@@ -1,0 +1,13 @@
+kubectl -n rabbits get pods
+kubectl -n rabbits get pvc
+kubectl -n rabbits exec -it rabbitmq-1 bash
+kubectl -n rabbits delete pods rabbitmq-0
+kubectl exec -n rabbits -it rabbitmq-1 ./bin/bash
+kubectl -n rabbits port-forward rabbitmq-0 8080:5672
+kubectl -n rabbits port-forward rabbitmq-0 15674:15674
+
+kubectl delete -n rabbits -f .\k8s\rabbit-statefulset.yaml
+kubectl delete -n rabbits -f .\k8s\rabbit-configmap.yaml
+kubectl delete -n rabbits -f .\k8s\rabbit-secret.yaml
+kubectl delete -n rabbits -f .\k8s\rabbit-rbac.yaml
+

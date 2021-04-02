@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment-http
+spec:
+  selector:
+    matchLabels:
+      project: test-pod-http
+  template:
+    metadata:
+      labels:
+        project: test-pod-http
+    spec:
+      containers:
+        - name: test-http-container
+          image: httpd:latest
+          ports:
+            - name: ui
+              containerPort: 80

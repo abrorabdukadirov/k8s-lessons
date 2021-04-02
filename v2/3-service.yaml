@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-service-http
+spec:
+  type: LoadBalancer
+  selector:
+    project: test-pod-http
+  ports:
+    - name: test-service-listener-http
+      port: 3030
+      targetPort: 80
